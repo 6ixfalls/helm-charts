@@ -98,7 +98,7 @@ serviceAccount:
   multus: {}
 
 {{- end -}}
-{{- $_ := mergeOverwrite .Values (include "multus.hardcodedValues" . | fromYaml) -}}
+{{- $_ := mergeOverwrite (include "multus.hardcodedValues" . | fromYaml) .Values -}}
 
 {{/* Render the templates */}}
 {{ include "bjw-s.common.loader.generate" . }}
